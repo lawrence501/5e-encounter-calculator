@@ -11,16 +11,6 @@ def getInt(promptStr):
             print("Must be an integer.\n")
     return i
 
-def getDifficulty(promptStr):
-    while True:
-        try:
-            d = input("%s: " % promptStr)
-            assert d in {"easy", "medium", "hard", "deadly"}
-            break
-        except AssertionError:
-            print("Must be easy, medium, hard, or deadly.\n")
-    return d
-
 def getEncounterCr():
     while True:
         try:
@@ -39,6 +29,8 @@ def getEncounterCr():
     return ecr
 
 def calculateDifficulty(tcl, ecr):
+    if ecr < tcl // 6:
+        return "trivial"
     if ecr < tcl // 3:
         return "easy"
     if ecr < tcl // 2:

@@ -10,6 +10,7 @@ ECR (encounter challenge rating) = sum of CRs of all monsters
 
 ### Difficulty Rules
 
+- Trivial: ECR = TCL/12
 - Easy: ECR = TCL/6
 - Medium: ECR = TCL/3
 - Hard: ECR = TCL/2
