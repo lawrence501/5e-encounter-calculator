@@ -29,13 +29,13 @@ def getEncounterCr():
     return ecr
 
 def calculateDifficulty(tcl, ecr):
-    if ecr < tcl // 6:
+    if ecr < round(tcl / 6):
         return "trivial"
-    if ecr < tcl // 3:
+    if ecr < round(tcl / 3):
         return "easy"
-    if ecr < tcl // 2:
+    if ecr < round(tcl / 2):
         return "medium"
-    if ecr < (2 * tcl) // 3:
+    if ecr < round((2 * tcl) / 3):
         return "hard"
     return "deadly"
 
