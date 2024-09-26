@@ -11,7 +11,7 @@ def getInt(promptStr):
             print("Must be an integer.\n")
     return i
 
-def getEncounterCr():
+def getEncounterCr(partyLvl):
     while True:
         try:
             ecr = 0
@@ -20,7 +20,10 @@ def getEncounterCr():
             for set in sets:
                 setSplit = set.split("x ")
                 assert len(setSplit) == 2
-                ecr += int(setSplit[0]) * float(setSplit[1])
+                cr = float(setSplit[1])
+                if partyLvl < 5 and cr < 1:
+                    cr = 0.125 if cr == float(0) else cr * 2
+                ecr += int(setSplit[0]) * cr
             break
         except AssertionError:
             print("Please enter the correct monster set format\n")
@@ -42,10 +45,11 @@ def calculateDifficulty(tcl, ecr):
 if __name__ == "__main__":
     while True:
         charCounter = getInt("Enter the number of characters to balance for")
-        tcl = charCounter * getInt("Enter the party level")
+        partyLvl = getInt("Enter the party level")
+        tcl = charCounter * partyLvl
 
         print("\nYou can now enter monster sets and see what difficulty they would be for this group configuration.\n\t"
               " For example, for 3x CR 1s and 2x CR 2s, you would enter: 3x 1, 2x 2\n\t")
         while True:
-            ecr = getEncounterCr()
+            ecr = getEncounterCr(partyLvl)
             print("Difficulty: %s\n" % calculateDifficulty(tcl, ecr))
