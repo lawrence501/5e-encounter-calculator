@@ -1,7 +1,3 @@
-import csv
-import math
-import re
-
 def getInt(promptStr):
     while True:
         try:
