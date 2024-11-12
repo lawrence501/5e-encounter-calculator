@@ -28,7 +28,6 @@ def getEncounterCr(partyLvl):
     return ecr
 
 def calculateDifficulty(tcl, ecr):
-    print(ecr)
     if ecr < tcl / 6:
         return "trivial"
     if ecr < tcl / 3:
